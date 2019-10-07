@@ -1,0 +1,23 @@
+Geral: 
+* instalar minikube. versão: minikube v1.3.1 on Ubuntu 16.04
+* Instalar kubeless: https://kubeless.io/docs/quick-start/ versão 1.04
+* instalando kafka para o kubeless : (wget  https://github.com/kubeless/kafka-trigger/releases/download/v1.0.2/kafka-zookeeper-v1.0.2.yaml)
+* ativando o ingress do nginx para service discovery
+#### Especifico para o forum
+* mongo db
+
+
+### inicio do desenvolvimento
+
+#### criação de arquivos
+* Criamos o handler de criação de novo artigo no arquivo index.js
+* em seguida vamos cadastrar nossa função no kubeless informando o ambiente de execução, as dependencias, a função de entrada e o arquivo.
+	    $ kubeless function deploy create-article --runtime nodejs8 --dependencies package.json --handler index.createArticle --from-file index.js
+* feito isso precisamos cadastrar o evento que vai disparar a função, no caso o path /create
+	    $ kubeless trigger http create create-article --function-name create-article --path create --hostname localhost
+* finalmente vamos criar o topico do kafka de criação de tópico
+	$ kubeless topic create new-article-topic
+
+* teoricamente tinhamos que fazer um curl para http://localhost/create para ativar a função
+** problema para expor o serviço olhar: https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+
