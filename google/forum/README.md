@@ -1,4 +1,4 @@
-# Passo a passo para criação do fourum
+# Passo a passo para criação do forum
 
 ## Criar tópicos para a comunicação
 Criar um tópico para criação de artigos
