@@ -92,6 +92,30 @@ O persist vai receber o evento do kafka quando o create-article mandar uma mensa
 
 `$ kubeless trigger kafka create persist-article --namespace forum --function-selector created-by=kubeless,function=persist-article --trigger-topic new-article-topic`
 
+##### list-articles
+
+A função list-articles vai ser responsavel por consultar o banco e listar todos os tópicos existentes
+
+* deploy
+
+`$ kubeless function deploy list-articles --namespace forum --runtime nodejs8 --dependencies package.json --handler index.listArticles --from-file index.js`
+
+* trigger http
+
+`$ kubeless trigger kafka create persist-article --namespace forum --function-selector created-by=kubeless,function=persist-article --trigger-topic new-article-topic`
+
+##### get-article
+
+A função get-article vai receber um id por parametro e retornar o tópico corespondente
+
+* deploy
+
+`$ kubeless function deploy get-article --namespace forum --runtime nodejs8 --dependencies package.json --handler index.getArticle --from-file index.js`
+
+* trigger http
+
+`$ kubeless trigger http create get-article --namespace forum --function-name get-article`
+
 
 **problema para expor o serviço olhar: https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/**
 
