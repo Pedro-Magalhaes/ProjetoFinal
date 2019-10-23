@@ -25,7 +25,7 @@ spec:
   selector:
     kubeless: zookeeper
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -105,12 +105,15 @@ spec:
   scope: Namespaced
   version: v1beta1
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kafka
   namespace: kubeless
 spec:
+  selector:
+    matchLabels:
+      kubeless: kafka
   serviceName: broker
   template:
     metadata:
@@ -176,12 +179,15 @@ spec:
   selector:
     kubeless: kafka
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zoo
   namespace: kubeless
 spec:
+  selector:
+    matchLabels:
+      kubeless: zookeeper
   serviceName: zoo
   template:
     metadata:
