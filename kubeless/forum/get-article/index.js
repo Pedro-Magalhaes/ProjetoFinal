@@ -2,9 +2,15 @@ const MongoClient = require('mongodb').MongoClient;
 
     module.exports = {
       getArticle: function (event, context) {
-        const url = event.extensions.request.url;
-        const id = url.substring(1);
-
+        const url = event.extensions.request.headers["x-original-uri"];
+        let id = url.match(/[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/);
+        if(id) {
+          id = id[0];
+        } else {
+          event.extensions.response.statusCode = 404;
+          event.extensions.response.send("Erro id nullo");
+        }
+        console.log(id);
         return new Promise((resolve, reject) => {
 
           MongoClient.connect('mongodb://mongo.forum:27017', (err, client) => {
@@ -19,7 +25,7 @@ const MongoClient = require('mongodb').MongoClient;
                 client.close();
 
                 if (err) {
-                  console.log(err);
+                  console.log('id nor founcd: '+id +' ' + err);
                   reject(err);
                 } else {
                   if (doc) {
@@ -31,7 +37,8 @@ const MongoClient = require('mongodb').MongoClient;
                     });
                   } else {
                     event.extensions.response.statusCode = 404;
-                    resolve();
+                    console.log('err:' + 'id: ' + id + ' not found');
+                    resolve(id + '  id not found');
                   }
                 }
               });
