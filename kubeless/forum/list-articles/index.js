@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
       listArticles: function (event, context) {
         return new Promise((resolve, reject) => {
 
-          MongoClient.connect('mongodb://mongo.default:27017', (err, client) => {
+          MongoClient.connect('mongodb://mongo.forum:27017', (err, client) => {
             if (err) {
               console.log(err);
               reject(err);
