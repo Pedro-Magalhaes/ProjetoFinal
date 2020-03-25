@@ -1,10 +1,13 @@
 local BasePlugin = require "kong.plugins.base_plugin"
 local http = require "resty.http"
-local csgrid_request = require "kong.plugins.external-auth.auth_csgrid"
+local job_history_query_log = require "kong.plugins.external-auth.job_history_plugin"
 
 local kong = kong
 local ExternalAuthHandler = BasePlugin:extend()
 
+-- variáveis de configuração
+-- conf.path (string)
+-- conf.urls (array de urls)
 
 local function check_path_in_blacklist(blacklist,path)
   local correct_path = path:gsub("/$","")
@@ -71,7 +74,7 @@ function ExternalAuthHandler:access(conf)
     if token_without_bearer == nil then
       return kong.response.exit(401, {message="Token invalido"})
     end
-    local is_valid_token = csgrid_request.verify_token_csgrid(conf.authUrl, "v1/authentication/token/validation", token_without_bearer, "access", "pt-br")
+    local is_valid_token = job_history_query_log.verify_token_csgrid(conf.authUrl, "v1/authentication/token/validation", token_without_bearer, "access", "pt-br")
   
     --Caso nao seja valido, retorna 401
     if not is_valid_token then
