@@ -57,7 +57,7 @@ services:
       KONG_PG_USER: ${KONG_PG_USER:-kong}
       KONG_PROXY_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_PLUGINS: bundled,job_history_log
+      KONG_PLUGINS: bundled, job_history_log
     networks:
       - kong-net
     volumes:
@@ -112,7 +112,7 @@ services:
   konga:
     image: pantsel/konga
     container_name: konga
-    restart: always
+    restart: on-failure
     networks:
         - kong-net   
     environment:

@@ -1,0 +1,14 @@
+{
+  "name": "log_history_query",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "export pubsub_topic=history_log && functions-framework --target=logQuery",
+    "debug": "export pubsub_topic=history_log && node --inspect node_modules/@google-cloud/functions-framework --target=logQuery"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.5.1",
+    "@google-cloud/pubsub": "^1.1.2",
+    "cors": "^2.8.5",
+    "uuid": "^3.3.3"
+  }
+}

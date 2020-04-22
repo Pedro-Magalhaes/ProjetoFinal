@@ -1,0 +1,56 @@
+Relátorio do PF1:
+1   Introdução
+2   Situação atual
+2.1  O modelo serverless
+2.1.1  Conteiners
+3   Proposta e objetivos do trabalho
+3.1  Aplicações propostas
+3.1.1  Aplicação de análise de uso de umendpointde busca
+3.1.2  Aplicação deMapReduce
+3.2  Ambientes de desenvolvimento
+3.2.1  Kubernetes
+3.2.2  Google Cloud
+4   Atividades realizadas
+4.1  Estudo sobre os ambientes
+4.2  Desenvolvimento de uma aplicação teste
+
+
+*****************************************************************
+PF2:
+1   Introdução OK
+
+2   Situação atual OK 
+
+2.1  O modelo serverless OK
+
+2.1.1  Conteiners???? Passar para situação atual? Ou criar uma parte de histórico?
+
+3 Proposta e objetivos do trabalho 
+(introduzir sobre aplicações)
+(comentar sobre os ambientes escolhidos kubernetess e google cloud e porque)
+
+4 trabalhos relacionados (mostrar semalhanças e contribuições do nosso trabalho)
+
+5.1  Aplicações criadas (detalhar aplicações)
+
+5.1.1  Aplicação de análise de uso de um endpoint de busca | 
+
+5.1.2  Aplicação deMapReduce
+
+6.2  Ambientes de desenvolvimento (verificar se nas aplicações vou precisar do conhecimento do ambiente)
+
+6.2.1  Kubernetes
+
+6.2.2  Google Cloud
+
+7   Atividades realizadas (comentar o trabalho realizado no PF 1 e como avançamos)
+	(introduzir cada etapa feita)
+8 Resultados | análise
+8.1  Estudo sobre os ambientes ??
+8.2  Desenvolvimento das aplicações
+	dificuldades (verificar latências)
+	beneficios
+	métricas?
+9 conclusão
+	(possivelmente comentar sobre trabalhos futuros)
+
