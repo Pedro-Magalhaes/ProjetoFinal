@@ -15,8 +15,6 @@ const topic = pubsub.topic(process.env.pubsub_topic);
 exports.logQuery = (req, res) => {
   const query = req.query.query || req.body.query;
 
-  // DEBUG
-  // END DEBUG
   if(!query) {
     console.error('No query received. Returning 400')
     res.status(400).send('query param is mandatory');
@@ -28,9 +26,6 @@ exports.logQuery = (req, res) => {
         created: new Date(),
         query: query
   };
-  
-  console.log('publishing:')
-  console.log(query_log);
 
   const dataBuffer = Buffer.from(JSON.stringify(query_log));
   topic.publish(dataBuffer)
