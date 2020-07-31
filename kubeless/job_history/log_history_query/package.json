@@ -1,0 +1,9 @@
+{
+  "name": "log_history_query",
+  "version": "0.0.1",
+  "scripts": {
+  },
+  "dependencies": {
+    "uuid": "^3.3.3"
+  }
+}

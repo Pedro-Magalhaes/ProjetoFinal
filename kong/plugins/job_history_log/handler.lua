@@ -13,8 +13,8 @@ end
 -- variáveis de configuração
 -- conf.path (string)
 -- conf.urls (array de urls)
-function jobHistoryLogHandler:access(conf)
-  jobHistoryLogHandler.super.access(self)
+function jobHistoryLogHandler:access(conf)  -- TODO: Alterar para acessar na faze de log!!
+  jobHistoryLogHandler.super.access(self) -- https://docs.konghq.com/0.14.x/plugin-development/custom-logic/
   
   local path = kong.request.get_path();
 
